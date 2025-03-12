@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Button from "@/components/ui/button";
+import Input from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Define valid phylogenetic model types
@@ -26,28 +26,28 @@ export default function Home() {
     }
   };
 
-  // // Handle form submission
-  // const handleSubmit = async (): Promise<void> => {
-  //   if (!file) {
-  //     alert("Please upload a FASTA file.");
-  //     return;
-  //   }
+  // Handle form submission
+  const handleSubmit = async (): Promise<void> => {
+    if (!file) {
+      alert("Please upload a FASTA file.");
+      return;
+    }
 
-  //   setLoading(true);
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   formData.append("model", model);
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("model", model);
 
-  //   try {
-  //     const res = await axios.post<ApiResponse>("/api/analyze", formData);
-  //     setResponse(res.data.result);
-  //   } catch (error) {
-  //     console.error("Error processing file:", error);
-  //     setResponse("Error processing the file.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+    try {
+      const res = await axios.post<ApiResponse>("/api/analyze", formData);
+      setResponse(res.data.result);
+    } catch (error) {
+      console.error("Error processing file:", error);
+      setResponse("Error processing the file.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center min-h-screen p-10 bg-gray-100">
@@ -57,7 +57,7 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           {/* File Upload */}
-          <Input type="file" accept=".fasta" />
+          <Input type="file" accept=".pdf" onChange={handleFileChange}/>
 
           {/* Model Selection Dropdown */}
           <select
@@ -71,7 +71,7 @@ export default function Home() {
           </select>
 
           {/* Submit Button */}
-          <Button className="w-full mt-4">
+          <Button className="w-full mt-4" onClick={handleSubmit} type="submit">
             {loading ? "Processing..." : "Generate Tree"}
           </Button>
 
