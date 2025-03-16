@@ -43,7 +43,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 [FastAPI Endpoint](https://fastapi.tiangolo.com/)
 Visualization using D3.js or Plotly
 
-# Alternate Method - Clustal
+# Alternate Method - ClustalW
 
 Note: This project does not use clustalW because of dependency issues but it is a viable option
 
