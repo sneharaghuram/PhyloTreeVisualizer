@@ -97,16 +97,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-### Phylogenetic Analysis
+# Usage
 
-## Usage
-
-# Local
+## Local
 
 Start your file using uvicorn phylo_tree:app --reload
 Terminate Ctril + C
 
-# FASTA File
+## FASTA File
 
 ## Tech Stack
 
@@ -115,7 +113,9 @@ Terminate Ctril + C
 Visualization using D3.js or Plotly
 AI Capabilities using -
 
-# Alternate Method - ClustalW
+## Dependency Issues
+
+### Alternate Method - ClustalW
 
 Note: This project does not use clustalW because of dependency issues but it is a viable option
 
