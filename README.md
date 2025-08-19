@@ -1,3 +1,65 @@
+# phylo-gen-visualizer 🧬🌳
+
+A lightweight web application for **phylogenetic tree generation and visualization**.  
+This project ingests raw sequencing data, processes it through an automated backend pipeline, and produces **interactive phylogenetic trees** for exploration and analysis.
+
+---
+
+## 🌍 Why This Project Matters
+
+Evolutionary biology seeks to answer fundamental questions about how species arise, adapt, and diverge over time.  
+One of its most powerful tools is the **phylogenetic tree**, which reveals evolutionary relationships through genetic data.
+
+However, most existing tools for phylogenetic analysis are either:
+
+- **Command-line only** (requiring deep bioinformatics expertise), or
+- **Not easily reproducible/deployable** across platforms.
+
+This project was born out of my interest in **evolutionary biology** and my passion for **computer science**.  
+By combining the two, I wanted to create a tool that:
+
+- Automates the tedious parts of **data parsing, alignment, and visualization**,
+- Makes phylogenetic analysis **accessible and interactive** via a modern web app,
+- Demonstrates how **software engineering practices** (Docker, serverless deployment, CI/CD) can strengthen reproducibility in biology research.
+
+In short: it’s a step toward making evolutionary analysis more usable, scalable, and available to both researchers and students.
+
+## 🚀 Features
+
+- **Sequencing Data Ingestion**: Upload FASTA/sequence data for analysis.
+- **Automated Workflow**:
+  - Parsing and preprocessing
+  - Sequence alignment
+  - Phylogenetic tree construction
+- **Interactive Visualization**: Explore tree structures directly in the browser.
+- **Dockerized Deployment**: Fully containerized for portability and reproducibility.
+- **Serverless Hosting**: Deployed on **Vercel** for easy access without managing infrastructure.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Python (BioPython, NumPy, Matplotlib)
+- **Workflow Automation**: Custom scripts for parsing, alignment, and visualization
+- **Containerization**: Docker
+- **Frontend / Deployment**: Next.js (React) + Vercel
+- **Visualization**: D3.js & Matplotlib
+
+---
+
+## 📦 Installation (Local)
+
+Clone the repo and spin it up using Docker:
+
+````bash
+git clone https://github.com/your-username/phylo-gen-visualizer.git
+cd phylo-gen-visualizer
+docker build -t phylo-gen .
+docker run -p 8000:8000 phylo-gen
+
+
+## [IN PROGRESS]
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -12,7 +74,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+````
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -37,11 +99,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ### Phylogenetic Analysis
 
+## Usage
+
+# Local
+
+Start your file using uvicorn phylo_tree:app --reload
+Terminate Ctril + C
+
+# FASTA File
+
 ## Tech Stack
 
 [BioPython Module - Phylo](https://biopython.org/wiki/Phylo)
 [FastAPI Endpoint](https://fastapi.tiangolo.com/)
 Visualization using D3.js or Plotly
+AI Capabilities using -
 
 # Alternate Method - ClustalW
 
