@@ -24,7 +24,7 @@ async def analyze_fasta(file: UploadFile = File(...)):
         await f.write(content)
 
     # Step 2: Read sequences from FASTA file
-    sequences = list(SeqIO.parse(file_path, "fasta"))
+    sequences = list(SeqIO.parse(file_path, "fasta-blast"))
     
     if len(sequences) < 2:
         return {"error": "At least two sequences are required to build a phylogenetic tree."}

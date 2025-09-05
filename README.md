@@ -47,7 +47,7 @@ In short: it’s a step toward making evolutionary analysis more usable, scalabl
 
 ---
 
-## 📦 Installation (Local)
+<!-- ## 📦 Installation (Local)
 
 Clone the repo and spin it up using Docker:
 
@@ -95,28 +95,33 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details. -->
 
 # Usage
 
 ## Local
 
 Start your file using uvicorn phylo_tree:app --reload
-Terminate Ctril + C
+Terminate Ctrl + C
 
 ## FASTA File
 
-## Tech Stack
+Needs to be of the format:
 
-[BioPython Module - Phylo](https://biopython.org/wiki/Phylo)
-[FastAPI Endpoint](https://fastapi.tiangolo.com/)
-Visualization using D3.js or Plotly
-AI Capabilities using -
+```
+>Human
+ATGCGTACGTTAGCGTACGTAGCTAGCTAGTACG
+>Chimpanzee
+ATGCGTACGTTAGCGTACGTAGCTAGCTGGTACG
+>Mouse
+ATGCGTACGTTAGCGTACGTGGCTAGCTGGTTCG
+```
 
 ## Dependency Issues
 
 ### Alternate Method - ClustalW
 
+March 2025
 Note: This project does not use clustalW because of dependency issues but it is a viable option
 
 Clustal-W Usage and Installation
@@ -141,3 +146,14 @@ After installation, run Clustal-W from the terminal:
 bash
 Copy
 clustalw
+
+## Other Bugs and Fixes
+
+- Distance matrix should have zeroes along the diagonal
+- FASTA Blast or FASTA Pearson format does not allow files that start with >, you need to update to include the FATSA-BLAST or FASTA-PEARSON format
+
+## Methods for Improvement
+
+- Cleaner trees for smaller datasets
+- MultipleSeqAlignment so that you don't have to manually create the matrix
+- Use a model-corrected distance (e.g., JC69/K80) before tree building (scikit-bio provides these easily), or run a real MSA (MAFFT/MUSCLE) if sequences aren’t aligned.
