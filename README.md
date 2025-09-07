@@ -154,12 +154,18 @@ clustalw
 - FASTA Blast only for parsing FASTA inside BLAST output files, so it will collapse header names to the same generic thing
 - React import vs export default
 - Adding CORS Middleware to prevent browser from blocking requests to different origins, in our case we add the FastAPI url to make sure that request is allowed
+- The tree was not generating the way I wanted - it used Bezier curves and then the cladograms looked strange
 
 ## Methods for Improvement
 
 - Cleaner trees for smaller datasets
 - MultipleSeqAlignment so that you don't have to manually create the matrix
 - Use a model-corrected distance (e.g., JC69/K80) before tree building (scikit-bio provides these easily), or run a real MSA (MAFFT/MUSCLE) if sequences aren’t aligned.
+- Better UI
+  - d3.zoom
+  - export SVG, PNG
+- strip the inner keyword from the backend
+- Add an "About the project/About me" section
 
 ## Learnings
 
