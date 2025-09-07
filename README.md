@@ -151,9 +151,45 @@ clustalw
 
 - Distance matrix should have zeroes along the diagonal
 - FASTA Blast or FASTA Pearson format does not allow files that start with >, you need to update to include the FATSA-BLAST or FASTA-PEARSON format
+- FASTA Blast only for parsing FASTA inside BLAST output files, so it will collapse header names to the same generic thing
+- React import vs export default
+- Adding CORS Middleware to prevent browser from blocking requests to different origins, in our case we add the FastAPI url to make sure that request is allowed
 
 ## Methods for Improvement
 
 - Cleaner trees for smaller datasets
 - MultipleSeqAlignment so that you don't have to manually create the matrix
 - Use a model-corrected distance (e.g., JC69/K80) before tree building (scikit-bio provides these easily), or run a real MSA (MAFFT/MUSCLE) if sequences aren’t aligned.
+
+## Learnings
+
+### CORS
+
+CORS stands for **Cross-Origin Resource Sharing**. It’s a security mechanism built into browsers that decides **which websites are allowed to make requests to which servers**.
+
+Imagine you’re logged into your bank’s website. Without CORS, a malicious site you visit in another tab could secretly make a request to your bank’s API (with your cookies) and transfer money. That’s **cross-site request forgery (CSRF)**.
+
+CORS prevents this by default: browsers **block requests to a different origin** (different domain, port, or protocol) unless the server explicitly says “yes, I allow this.”
+
+When your frontend (running at `http://localhost:3000`) tries to call your FastAPI backend (`http://127.0.0.1:8000`), the browser notices:
+
+- These are different **origins** (`localhost:3000` vs `127.0.0.1:8000`).
+- Before sending the real request, the browser first sends an **OPTIONS preflight request** asking:
+
+  > “Hey server, do you allow requests from [http://localhost:3000](http://localhost:3000) with method POST and header Content-Type=…?”
+
+The FastAPI server must respond with headers like:
+
+```
+Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Methods: POST
+Access-Control-Allow-Headers: Content-Type
+```
+
+Only then will the browser proceed with the actual POST.
+
+If those headers aren’t present, you’ll see a “Network Error” in your frontend (even if curl works fine — because curl doesn’t enforce CORS).
+
+- curl works (no CORS in command-line clients).
+- Browser blocks the request (CORS protection).
+- Fix: add the `CORSMiddleware` in FastAPI so it replies with the right headers for `http://localhost:3000`.
