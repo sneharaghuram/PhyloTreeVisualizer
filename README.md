@@ -155,6 +155,7 @@ clustalw
 - React import vs export default
 - Adding CORS Middleware to prevent browser from blocking requests to different origins, in our case we add the FastAPI url to make sure that request is allowed
 - The tree was not generating the way I wanted - it used Bezier curves and then the cladograms looked strange
+- Refactored custom UI components (`Input`, `Button`, `Card`) to use proper TypeScript types with optional `className` and uncontrolled file inputs, ensuring clean Next.js builds and better type safety.
 
 ## Methods for Improvement
 
@@ -199,3 +200,5 @@ If those headers aren’t present, you’ll see a “Network Error” in your fr
 - curl works (no CORS in command-line clients).
 - Browser blocks the request (CORS protection).
 - Fix: add the `CORSMiddleware` in FastAPI so it replies with the right headers for `http://localhost:3000`.
+
+### Railway vs AWS Lambda

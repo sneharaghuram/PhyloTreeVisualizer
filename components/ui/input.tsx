@@ -1,21 +1,21 @@
 import React from "react";
 
 interface InputProps {
-  type: "file";
-  value: File | null;
+  type?: "file"; // make optional, defaults to file
+  value?: File | null; // optional now
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   className?: string;
   disabled?: boolean;
-  accept: string;
+  accept?: string;
 }
 
 const Input: React.FC<InputProps> = ({
-  type,
+  type = "file",
   value,
   onChange,
   placeholder,
-  className,
+  className = "",
   disabled = false,
   accept,
 }) => {
@@ -23,7 +23,7 @@ const Input: React.FC<InputProps> = ({
     <div className={`input-wrapper ${className}`}>
       <input
         type={type}
-        value={value ? value.name : ""}
+        // ⚠️ do not bind value for file inputs
         onChange={onChange}
         placeholder={placeholder}
         className="input"

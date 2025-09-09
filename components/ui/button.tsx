@@ -1,31 +1,24 @@
-import React from "react";
+// components/ui/button.tsx
+import * as React from "react";
 
-// Define ButtonProps interface for typing the props
-interface ButtonProps {
-  children: React.ReactNode;  // Button text or elements passed as children
-  onClick: () => void;        // Function to handle button click
-  className?: string;         // Optional custom className
-  type?: "button" | "submit" | "reset"; // Optional, default is "button"
-  disabled?: boolean;         // Optional, default is false
-}
+// Use built-in typing so all native <button> props are supported
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({
-  children,
-  onClick,
-  className = "",
-  type = "button",
-  disabled = false,
-}) => {
-  return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`btn ${className}`}
-      disabled={disabled}
-    >
-      {children} {/* Button text or elements */}
-    </button>
-  );
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, className = "", type = "button", disabled = false, ...props }, ref) => {
+    return (
+      <button
+        ref={ref}
+        type={type}
+        disabled={disabled}
+        className={`btn inline-flex items-center justify-center rounded-md border px-3 py-2 text-sm font-medium ${className}`}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
+Button.displayName = "Button";
 export default Button;
