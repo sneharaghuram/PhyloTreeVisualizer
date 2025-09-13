@@ -156,6 +156,8 @@ clustalw
 - Adding CORS Middleware to prevent browser from blocking requests to different origins, in our case we add the FastAPI url to make sure that request is allowed
 - The tree was not generating the way I wanted - it used Bezier curves and then the cladograms looked strange
 - Refactored custom UI components (`Input`, `Button`, `Card`) to use proper TypeScript types with optional `className` and uncontrolled file inputs, ensuring clean Next.js builds and better type safety.
+- Add Vercel deployed URL in CORS and railway generated URL in Vercel environment variables
+- Watch out for endpoint analyze versus analyze/
 
 ## Methods for Improvement
 

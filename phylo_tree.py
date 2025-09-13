@@ -12,12 +12,14 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
+    # allow all Vercel previews + your prod domain
+    allow_origin_regex=r"https://.*\.vercel\.app",
+    allow_origins=[  # explicit prod & local
+        "https://phylo-tree-generator.vercel.app/",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://phylo-tree-generator.vercel.app/"
     ],
-    allow_credentials=True,
+    allow_credentials=False, #don't need cookies/auth
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -26,6 +28,7 @@ app.add_middleware(
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+@app.post("/analyze")
 @app.post("/analyze/")
 async def analyze_fasta(file: UploadFile = File(...)):
     """Processes a FASTA file and returns a phylogenetic tree (Newick)."""
