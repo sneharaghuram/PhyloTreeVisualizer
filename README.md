@@ -81,16 +81,15 @@ ATGCGTACGTTAGCGTACGTGGCTAGCTGGTTCG
 - Better UI
   - d3.zoom
   - export SVG, PNG
-- strip the inner keyword from the backend
 
 ## Other Bugs and Fixes
 
 - Distance matrix should have zeroes along the diagonal
-- FASTA Blast or FASTA Pearson format does not allow files that start with >, you need to update to include the FATSA-BLAST or FASTA-PEARSON format
-- FASTA Blast only for parsing FASTA inside BLAST output files, so it will collapse header names to the same generic thing
+- FASTA Blast or FASTA Pearson format does not allow files that start with #, you need to update to include the FATSA-BLAST or FASTA-PEARSON format
+- FASTA Blast only for parsing FASTA inside BLAST output files, so it will collapse header names to the same name
 - React import vs export default
 - Adding CORS Middleware to prevent browser from blocking requests to different origins, in our case we add the FastAPI url to make sure that request is allowed
-- The tree was not generating the way I wanted - it used Bezier curves and then the cladograms looked strange
+- The tree uses Bezier curves and rather than rectangular cladograms
 - Refactored custom UI components (`Input`, `Button`, `Card`) to use proper TypeScript types with optional `className` and uncontrolled file inputs, ensuring clean Next.js builds and better type safety.
 - Add Vercel deployed URL in CORS and railway generated URL in Vercel environment variables
 - Watch out for endpoint analyze versus analyze/
