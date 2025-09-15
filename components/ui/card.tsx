@@ -7,7 +7,8 @@ type HeadingProps = React.HTMLAttributes<HTMLHeadingElement>;
 export function Card({ children, className = "", ...props }: DivProps) {
   return (
     <div
-      className={`bg-white shadow-md rounded-lg p-4 ${className}`}
+    className={`bg-primary-light shadow-md rounded-lg p-4 ${className}`}
+
       {...props}
     >
       {children}
