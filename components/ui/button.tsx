@@ -11,7 +11,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={type}
         disabled={disabled}
-        className={`bg-primary hover:bg-primary-dark text-black rounded-md px-3 py-2 transition-colors ${className}`}
+        className={`bg-primary border-2 border-lime-800 hover:bg-primary-dark text-black rounded-md px-3 py-2 transition-colors ${className}`}
         {...props}
       >
         {children}
